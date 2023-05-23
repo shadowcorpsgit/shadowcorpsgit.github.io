@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
+
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--=============== SWIPER CSS ===============-->
+        <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="../assets/css/styles.css">
+
+        <title> Shadow Corps </title>
+    </head>
+    <body>
+        <!--=============== HEADER ===============-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="../index.html" class="nav__logo">Shadow Corps</a>
+
+                <!-- Theme change button -->
+                <!--
+                    <i class='bx bx-moon change-theme' id="theme-button"></i>
+                -->
+            </nav>
+        </header>
+        <main class="main">
+            <!--=============== HOME ===============-->
+            <section class="home section" id="home">
+                <div class="home__container container grid">
+                    <div class="home__data">
+                        <span class="home__greeting">Try Hack Me</span>
+                        <h1 class="home__name">Começando na área de segurança</h1>
+                        <h3 class="home__education" style="color:orange">Medium</h3>
+                        <img src="../assets/img/hackerimg.jpg" class="img-header">
+                    </div>
+                </div>
+            </section>
+            
+            <!--=============== CONTENT ===============-->
+            <section class="about section" id="about">
+                <span class="section__subtitle"></span>
+                <h2 class="section__title">Introduction</h2>
+
+                <div class="about__container container">
+                    <div class="about__data">
+                        <p class="about__description">
+                            Mr Robot is one of my favorite tv series, 
+                            I've watched more than 5 times every season :) This CTF has 3 flags that we must find, let's start.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="about section">
+                <span class="section__subtitle">MrRobots.txt</span>
+                <h2 class="section__title">First Flag</h2>
+
+                <div class="about__container container">
+                    <div class="about__data">
+                        <p class="about__description">
+                            Accessing the ip we have a site with a terminal where we can execute certain commands but there is nothing useful here for us.
+                            So we start by enumerating the ports and services with nmap but not returning anything interesting. Then I use FFUF to enumerate directories. 
+                        </p>
+
+                        <img src="assets/img/01.png">
+
+                        <p class="about__description">
+                            While the command was running in the background I have the habit of always looking at the <i style="color: red;">robots.txt</i> directory.
+                            Accessing it we find two files, a wordlist and a key with our first flag!
+                        </p>
+
+                        <img src="assets/img/02.png" style="border-radius: 0%">
+
+                        <p class="about__description">
+                            I download both files and now just read the <i style="color: red;">key-1-of-3.txt</i> and we get our first flag:
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="about section">
+                <span class="section__subtitle">Elliot Shell</span>
+                <h2 class="section__title">Second Flag</h2>
+
+                <div class="about__container container">
+                    <div class="about__data">
+                        <p class="about__description">
+                            To find the second flag, after finishing FUFF you will have found the <i style="color: red;">wp-admin</i> directory.
+                            Accessing we have the wordpress login panel:
+                        </p>
+
+                        <img src="assets/img/03.png" style="width: 500px;">
+
+                        <p class="about__description">
+                            Here it is very clear what we need to do :)
+                            Let's perform a brute force attack using that <i style="color: red;">fsociety.dic</i> file we found earlier.
+                        </p>
+
+                        <p class="about__description">
+                            To perform the brute force I will use wpscan. Just use the following command (remove the “ ”):
+                            <i style="color: red;">wpscan --url 10.10.240.155 --passwords “wordlist” --usernames “wordlist”</i>
+                        </p>
+
+                        <img src="assets/img/04.png">
+
+                        <p class="about__description">
+                            A few minutes later we find our username and password. After logging in, we'll send our reverse-shell, to use the same one I used, just click <u><a href="https://gitlab.com/kalilinux/packages/webshells/-/blob/kali/master/php/php-reverse-shell.php" target="_blank" style="color: #fff";>here</a></u>.
+                        </p>
+
+                        <img src="assets/img/05.png">
+
+                        <p class="about__description">
+                            To send our shell, go to Appearance-Editor and select some php page, delete everything and paste our shell (don't forget to change the ip and port).
+                        </p>
+
+                        <img src="assets/img/06.png" style="width: 500px;">
+
+                        <p class="about__description">
+                            Just click the Update File button below to save your changes.
+                        </p>
+
+                        <img src="assets/img/07.png">
+
+                        <p class="about__description">
+                            Using netcat listening to the port we defined in the reverse shell, just access the page that we changed and so we get our shell :)
+                        </p>
+
+                        <img src="assets/img/08.png">
+
+                        <p class="about__description">
+                            Accessing /home we see that there is a user called <i>robot</i> and inside it we have two files: The flag 2 and an MD5 password
+                        </p>
+
+                        <img src="assets/img/09.png">
+
+                        <p class="about__description">
+                            The only file we have access to is the password, accessing the file we have the password in MD5:
+                        </p>
+
+                        <img src="assets/img/10.png" style="width: 500px;">
+
+                        <p class="about__description">
+                            Cracking it, we get the robot user password.
+                        </p>
+
+                        <img src="assets/img/11.png">
+
+                        <p class="about__description">
+                            And now we access the user robot.
+                        </p>
+
+                        <img src="assets/img/12.png">
+
+                        <p class="about__description">
+                            Now we can read the <i style="color: red;">key-2-of-3.txt</i> file and get our second flag!
+                        </p>
+                </div>
+            </section>
+
+
+            <section class="about section">
+                <span class="section__subtitle">nmap</span>
+                <h2 class="section__title">Last Flag</h2>
+
+                <div class="about__container container">
+                    <div class="about__data">
+                        <p class="about__description">
+                            To get the third flag we have to gain root access on the machine. And to scale privileges let's use nmap:
+                        </p>
+
+                        <img src="assets/img/13.png">
+                        <img src="assets/img/14.png" style="width: 500px;">
+
+                        <p class="about__description">
+                            Let's use <u><a href="https://gtfobins.github.io/gtfobins/nmap/" style="color: #fff;">nmap's interactive mode</a></u> to escalate privilege.
+                        </p>
+
+                        <img src="assets/img/15.png">
+
+                        <p class="about__description">
+                            Accessing it with the command <i style="color: red;">nmap --interactive</i> we get root :)
+                        </p>
+
+                        <img src="assets/img/16.png">
+
+                        <p class="about__description">
+                            And finally we got the last flag!
+                        </p>
+                </div>
+            </section>
+       
+
+        <!--=============== FOOTER ===============-->
+        <footer class="footer">
+            <div class="footer__container container">
+                <span class="footer__copy">
+                    &#169; Shadow Corps. Todos os direitos reservados.
+                </span>
+            </div>
+        </footer>
+
+        <!--=============== SCROLLREVEAL ===============-->
+        <script src="../assets/js/scrollreveal.min.js"></script>
+
+        <!--=============== SWIPER JS ===============-->
+        <script src="../assets/js/swiper-bundle.min.js"></script>
+
+        <!--=============== MIXITUP FILTER ===============-->
+        <script src="../assets/js/mixitup.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="../assets/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--=============== SWIPER CSS ===============-->
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <title> Shadow Corps </title>
+    </head>
+    <body>
+        <!--=============== HEADER ===============-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">Shadow Corps</a>
+            </nav>
+        </header>
+
+        <!--=============== MAIN ===============-->
+        <main class="main">
+            <!--=============== HOME ===============-->
+            <section class="home section" id="home">
+                <div class="home__container container grid">
+                    <div class="home__data">
+                        <h1 class="home__name">Shadow Corps</h1>
+                        <h3 class="home__education">Conteúdos sobre hacking e programação</h3>
+                    </div>
+                </div>
+            </section>
+            
+            <!--=============== SOBRE ===============-->
+            <section class="about section" id="about">
+                <span class="section__subtitle">Sobre</span>
+                <h2 class="section__title">Sobre a Shadow Corps</h2>
+
+                <div class="about__container container grid">
+                    <img src="assets/img/about.jpg" alt="" class="about__img">
+
+                        <p class="about__description">
+                            A Shadow Corps é um grupo brasileiro composto por 
+                            profissionais de cibersegurança, dedicado a compartilhar conhecimento 
+                            e expertise nas áreas de hacking e programação.
+                        </p>
+
+                    </div>
+                </div>
+            </section>
+
+            <!--=============== WORK ===============-->
+            <section class="work section" id="work">
+                <span class="section__subtitle">Base de conhecimento</span>
+                <h2 class="section__title">Publicações realizados</h2>
+
+                <div class="work__filters">
+                    <span class="work__item active-work" data-filter='all'>Todos</span>
+                    <span class="work__item" data-filter='.hacking'>Infosec</span>
+                    <span class="work__item" data-filter='.programação'>Programação</span>
+                </div>
+
+                    <div class="work__container container grid">
+                        <div class="work__card mix hacking">
+                            <img src="assets/img/hackerimg.jpg" alt="" class="work__img">
+
+                            <h3 class="work__title">Começando na área de segurança</h3>
+
+                            <p class="work__button" style="color:#888b91">
+                                25/06/2022
+                            </p>
+
+                            <a href="/Posts/comecando-na-area-de-seguranca.html" class="work__button">
+                                Ler <i class='bx bx-right-arrow-alt work__icon' ></i>
+                            </a>
+                        </div>
+
+                    </div>
+            </section>
+
+
+            <!--=============== INTEGRANTES ===============-->
+            <section class="testimonial section">
+                <span class="section__subtitle">Integrantes</span>
+                <h2 class="section__title">Conheça os Integrantes</h2>
+
+                <div class="testimonial__container container swiper">
+                    <div class="swiper-wrapper">
+                        <div class="testimonial__card swiper-slide">
+                            <img src="assets/img/axrootpfp.png" alt="" class="testimonial__img">
+
+                            <h3 class="testimonial__name">axroot</h3>
+                            <p class="testimonial__description">
+                            Venho estudando segurança ofensiva há cerca de 5 anos. Iniciei minha 
+                            trajetória no campo do desenvolvimento, simultaneamente mergulhando no estudo de hacking como um hobby. Em 2021, decidi realizar uma transição da área de 
+                            desenvolvimento para a área de segurança, começando minha atuação no Blue Team (parte defensiva). Atualmente, stou envolvido no Red Team (parte ofensiva da 
+                            área de segurança), pois é a sub-área que desperta meu maior fascínio e à qual dedico grande parte dos meus estudos.
+                            </p>
+                        </div>
+
+                        <div class="testimonial__card swiper-slide">
+                            <img src="assets/img/alenspfp.png" alt="" class="testimonial__img">
+
+                            <h3 class="testimonial__name">alens</h3>
+                            <p class="testimonial__description">
+                                Analista de Segurança da Informação - Red Team
+                            </p>
+                        </div>
+
+                        <div class="testimonial__card swiper-slide">
+                            <img src="assets/img/wann4crypfp.png" alt="" class="testimonial__img">
+
+                            <h3 class="testimonial__name">wann4cry</h3>
+                            <p class="testimonial__description">
+                                Analista de Segurança da Informação - Red Team
+                            </p>
+                        </div>
+
+                        <div class="testimonial__card swiper-slide">
+                            <img src="assets/img/lelouchpfp.png" alt="" class="testimonial__img">
+
+                            <h3 class="testimonial__name">lelouch</h3>
+                            <p class="testimonial__description">
+                                Analista de Segurança da Informação - Red Team
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+            </section>
+
+        <!--=============== FOOTER ===============-->
+        <footer class="footer">
+            <div class="footer__container container">
+                <span class="footer__copy">
+                    &#169; Shadow Corps. Todos os direitos reservados.
+                </span>
+            </div>
+        </footer>
+
+        <!--=============== SCROLLREVEAL ===============-->
+        <script src="assets/js/scrollreveal.min.js"></script>
+
+        <!--=============== SWIPER JS ===============-->
+        <script src="assets/js/swiper-bundle.min.js"></script>
+
+        <!--=============== MIXITUP FILTER ===============-->
+        <script src="assets/js/mixitup.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
